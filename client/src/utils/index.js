@@ -1,2 +1,4 @@
-export {axiosWithAuth} from "./axiosWithAuth"
-export {PrivateRoute} from "./PrivateRoute"
+import {axiosWithAuth} from "./axiosWithAuth"
+import {PrivateRoute} from "./PrivateRoute"
+
+export {PrivateRoute,axiosWithAuth}
