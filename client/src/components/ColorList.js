@@ -19,9 +19,9 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
-    axiosWithAuth().put(`/colors/${colorToEdit.id}`,colorToEdit)
-    .then(res=>colors.map(color=>color.id===res.data.id?updateColors([...colors,{[color]:res}]):""),console.log(colors))
-    .catch(err=>console.error(err))
+    axiosWithAuth().put(`/colors/${colorToEdit.id}`, colorToEdit)
+      .then(res => colors.map(color => color.id === res.data.id ? updateColors([...colors, { [color]: res }]) : ""), console.log(colors))
+      .catch(err => console.error(err))
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
@@ -29,7 +29,7 @@ const ColorList = ({ colors, updateColors }) => {
 
   const deleteColor = color => {
     // make a delete request to delete this color
-    
+    axiosWithAuth().delete(`colors/${color.id}`).then(res => console.log(res)).catch(err => console.error(err))
   };
 
   return (
@@ -40,11 +40,11 @@ const ColorList = ({ colors, updateColors }) => {
           <li key={color.color} onClick={() => editColor(color)}>
             <span>
               <span className="delete" onClick={e => {
-                    e.stopPropagation();
-                    deleteColor(color)
-                  }
-                }>
-                  x
+                e.stopPropagation();
+                deleteColor(color)
+              }
+              }>
+                x
               </span>{" "}
               {color.color}
             </span>
